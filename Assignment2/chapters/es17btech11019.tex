@@ -1,0 +1,34 @@
+\begin{enumerate}[label=\thesection.\arabic*.,ref=\thesection.\theenumi]
+\numberwithin{equation}{enumi}
+
+\begin{abstract}
+This document contains the solution of a matrix multiplication problem.
+\end{abstract}
+
+\section{Problem}
+\item For what value of x:
+\begin{align}
+    \myvec{1 & 2 & 1}\myvec{1 & 2 & 0 \\2 & 0 & 1\\1 & 0 & 2}\myvec{0 \\ 2 \\ x}=0
+\end{align}
+
+\section{Solution}
+\item Below is the solution :
+\begin{align}
+    \myvec{1 & 2 & 1}\myvec{1 & 2 & 0 \\2 & 0 & 1\\1 & 0 & 2}\myvec{0 \\ 2 \\ x}=0
+\\
+    \implies\myvec{1\times1+2\times2+1\times1 & 1\times2+2\times0+1\times0 & 1\times0+2\times1+1\times2}\myvec{0 \\ 2 \\ x}=0
+\\
+    \implies\myvec{6 & 2 & 4}\myvec{0 \\ 2 \\ x}=0
+\\
+    \implies 6\times0+2\times2+4\times x=0
+\\
+    \implies 4+4\times x=0
+\\
+    \implies 4\times x=-4
+\\
+    \implies x=-1
+\end{align}
+
+\end{enumerate}
+
+
