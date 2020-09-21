@@ -2,7 +2,7 @@
 \numberwithin{equation}{enumi}
 
 \begin{abstract}
-This document contains the solution of a matrix multiplication problem.
+    This document contains the solution of a matrix multiplication problem.
 \end{abstract}
 
 \section{Problem}
@@ -16,13 +16,17 @@ This document contains the solution of a matrix multiplication problem.
 \begin{align}
     \myvec{1 & 2 & 1}\myvec{1 & 2 & 0 \\2 & 0 & 1\\1 & 0 & 2}\myvec{0 \\ 2 \\ x}=0
 \\
-    \implies\myvec{1\times1+2\times2+1\times1 & 1\times2+2\times0+1\times0 & 1\times0+2\times1+1\times2}\myvec{0 \\ 2 \\ x}=0
+    \implies \myvec{\myvec{1&2}&\myvec{1}}\myvec{\myvec{1&2\\2&0}&\myvec{0\\1}\\\myvec{1&0}&\myvec{2}}\myvec{\myvec{0\\2}\\\myvec{x}}=0
 \\
-    \implies\myvec{6 & 2 & 4}\myvec{0 \\ 2 \\ x}=0
+    \implies \myvec{\myvec{1&2}\myvec{1&2\\2&0}+\myvec{1}\myvec{1&0}&\myvec{1&2}\myvec{0\\1}+\myvec{1}\myvec{2}}\myvec{\myvec{0\\2}\\\myvec{x}}=0
 \\
-    \implies 6\times0+2\times2+4\times x=0
+    \implies\myvec{\myvec{5&2}+\myvec{1&0}&\myvec{2+2}}\myvec{\myvec{0\\2}\\\myvec{x}}=0
 \\
-    \implies 4+4\times x=0
+    \implies \myvec{\myvec{6&2}&\myvec{4}}\myvec{\myvec{0\\2}\\\myvec{x}}=0
+\\
+    \implies \myvec{\myvec{6&2}\myvec{0\\2}+\myvec{4}\myvec{x}}=0
+\\
+    \implies \myvec{4+4\times x}=0
 \\
     \implies 4\times x=-4
 \\
