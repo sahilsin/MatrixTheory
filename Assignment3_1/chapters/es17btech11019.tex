@@ -1,0 +1,58 @@
+\begin{abstract}
+This document contains a problem based on properties of triangle.
+\end{abstract}
+
+Download the python codes from 
+%
+\begin{lstlisting}
+https://github.com/sahilsin/MatrixTheory/tree/master/Assignment3_1/codes
+\end{lstlisting}
+%
+and latex-tikz codes from 
+%
+\begin{lstlisting}
+https://github.com/sahilsin/MatrixTheory/tree/master/Assignment3_1/figs
+\end{lstlisting}
+%
+\section{PROBLEM}
+In triangle PQR , $PR>PQ$ and PS bisects $\angle QPR$.Prove that $\angle PSR > \angle PSQ$. 
+
+\section{SOLUTION}
+
+\textbf{Given:} $PR>PQ$ and $\angle QPS = \angle RPS $\\
+\textbf{To Prove:} $\angle PSR = \angle PSQ $\\
+\textbf{Proof:}\\
+
+As PS bisects $\angle QPR$
+\begin{align}
+    \angle QPS = \angle RPS \label{eq:1}
+\end{align}
+
+Using property angle opposite to larger side is always larger.
+
+\begin{align}
+    \angle PQR > \angle PRQ \label{eq:2}
+\end{align}
+
+Using property of sum of exterior angle is equal to sum of opposite interior angles.
+\begin{align}
+    \angle PSR = \angle PQR + \angle QPS
+\\
+    \angle PSQ = \angle RPS + \angle PRQ
+\end{align}
+ 
+ Adding \ref{eq:1} and \ref{eq:2} and using above properties we get :
+ \begin{align}
+     \angle PQR + \angle QPS > \angle PRQ + \angle RPS
+\\
+    \angle PSR > \angle PSQ
+ \end{align}
+
+\begin{figure}[h!]
+\begin{center}
+	\resizebox{\columnwidth/1}{!}{\input{figs/traingle}}
+\end{center}
+\caption{Triangle}
+\label{fig:Triangle}
+\end{figure}
+
