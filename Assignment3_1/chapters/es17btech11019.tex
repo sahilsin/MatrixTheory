@@ -28,10 +28,27 @@ As PS bisects $\angle QPR$
     \angle QPS = \angle RPS \label{eq:1}
 \end{align}
 
-Using property angle opposite to larger side is always larger.
+\begin{align}
+\cos\angle PQR= \frac{\left( \vec{P - Q } \right)^T \left( \vec{R - Q } \right)}{\norm{\vec{ P - Q}}\norm{\vec{ R - Q}}}
+\end{align}
 
 \begin{align}
-    \angle PQR > \angle PRQ \label{eq:2}
+\cos\angle PRQ= \frac{\left( \vec{P - R } \right)^T \left( \vec{Q - R } \right)}{\norm{\vec{ P - R}}\norm{\vec{ Q - R}}}
+\end{align}
+
+As,
+\begin{align}
+    \norm{\vec{ P - R}}>\norm{\vec{ P - Q}}
+\end{align}
+
+So,
+
+
+
+\begin{align}
+    \cos\angle PQR > \cos \angle PRQ
+\\
+    \implies \angle PQR > \angle PRQ \label{eq:2}
 \end{align}
 
 Using property of sum of exterior angle is equal to sum of opposite interior angles.
@@ -47,12 +64,14 @@ Using property of sum of exterior angle is equal to sum of opposite interior ang
 \\
     \angle PSR > \angle PSQ
  \end{align}
+ 
+ Hence proved!
 
 \begin{figure}[h!]
 \begin{center}
 	\resizebox{\columnwidth/1}{!}{\input{figs/traingle}}
 \end{center}
-\caption{Triangle}
+\caption{Right Angled Triangle}
 \label{fig:Triangle}
 \end{figure}
 
