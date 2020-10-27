@@ -1,81 +1,112 @@
-\begin{abstract}
-This document contains a problem based on conic problems.
-\end{abstract}
+\section{Problem}
+Trace the parabola and find its focus.
+\begin{align}
+144y^2-120xy+25x^2+619x-272y+663=0
+\end{align}
 
-Download the python codes from 
+\section{Solution}
+The general second degree equation can be expressed as follows,
+\begin{align}
+\Vec{x}^T\Vec{V}\Vec{x}+2\Vec{u}^T\Vec{x}+f=0
+\intertext{where,}
+\vec{V} &= \myvec{144&-60\\-60&25}\\ \label{eq:conics/ex/solution/given1}
+\vec{u} &= \myvec{\cfrac{619}{2}\\-136}\\ 
+f &= 663 \label{eq:conics/ex/solution/given2}
+\end{align}
+\begin{enumerate}
+\item Expanding the determinant of $\vec{V}$ we observe, 
+\begin{align}
+\mydet{144&-60\\-60&25} = 0 \label{eq:conics/ex/solution/eq2.1}
+\end{align}
+Also
+\begin{align}
+    \mydet{\vec{V} & \vec{u} \\ \vec{u}^T & f}=
+    \mydet{144&-60 & \cfrac{619}{2} \\-60&25 & -136 \\ \cfrac{619}{2} & -136 & 663} \\
+    \neq 0\label{eq:conics/ex/solution/eq2.2}
+\end{align}
+Hence from \eqref{eq:conics/ex/solution/eq2.1} and \eqref{eq:conics/ex/solution/eq2.2} we conclude that given equation is an parabola. The characteristic equation of $\vec{V}$ is given as follows,
+\begin{align}
+\mydet{\lambda\vec{I}-\vec{V}} = \mydet{\lambda-144&60\\60&\lambda-25} &= 0\\
+\implies \lambda^2-169\lambda &= 0\label{eq:conics/ex/solution/eqchar}
+\end{align}
+Hence the characteristic equation of $\vec{V}$ is given by \eqref{eq:conics/ex/solution/eqchar}. The roots of \eqref{eq:conics/ex/solution/eqchar} i.e the eigenvalues are given by
+\begin{align}
+\lambda_1=0, \lambda_2=169\label{eq:conics/ex/solution/eqeigenvals}    
+\end{align}
+\item For $\lambda_1 = 0$, the eigen vector $\vec{p}$ is given by 
+\begin{align}
+\vec{V}\vec{p} = 0
+\end{align}
+Row reducing $\vec{V}$ yields
+\begin{align}
+\implies
+\myvec{-144&60\\60&-25}\xleftrightarrow[R_2=R_2+5R_1]{R_1=\frac{R_1}{12}}\myvec{-12&5\\0&0}\\
+\implies\vec{p}_1=\cfrac{1}{13}\myvec{5\\12} \label{eq:conics/ex/solution/eq2.3}
+\end{align}
+Similarly, 
+\begin{align}
+\vec{p}_2=\frac{1}{13}\myvec{12\\-5} 
+\end{align}
 %
-\begin{lstlisting}
-https://github.com/sahilsin/MatrixTheory/tree/master/Assignment4/codes
-\end{lstlisting}
-%
-\section{PROBLEM}
-Trace the parabolas $144x^2-120xy+25y^2+619x-272y+663=0$, and find its focus. 
-
-\section{SOLUTION}
-
+Thus, the eigenvector rotation matrix and the eigenvalue matrix are
 \begin{align}
-    144x^2-120xy+25y^2+619x-272y+663=0
-\\
-    (12x-5y)^2=272y-619x-663 
+\vec{P}&=\myvec{\vec{p_1}&\vec{p_2}}=\frac{1}{13}\myvec{5&12\\ 12 &-5} \\
+\vec{D}&=\myvec{0&0\\0&169}
+\end{align}
+The focal length of the parabola is given by 
+\begin{align}
+\frac{\abs{2\vec{u}^T\vec{p_1}}}{\lambda_2}
+    = \frac{13}{169}=\cfrac{1}{13}
+\end{align}
+and its equation is
+\begin{align}
+    \vec{y^T}\vec{D}\vec{y}&=-\eta\myvec{1&0}\vec{y}\label{eq:conics/ex/solution/eq2.4}
+\end{align}
+where
+\begin{align}
+    \eta=2\vec{u}^T\vec{p_1}=-13
+\end{align}
+and the vertex $\vec{c}$ is given by 
+\begin{align}
+    \myvec{\vec{u^T}+\frac{\eta}{2}\vec{p_1^T} \\ \vec{V}}\vec{c}=
+    \myvec{-f \\\frac{\eta}{2}\vec{p_1}-\vec{u}} 
+\end{align}
+using equations \eqref{eq:conics/ex/solution/given1},\eqref{eq:conics/ex/solution/given2} and \eqref{eq:conics/ex/solution/eq2.3}
+\begin{align}
+    \myvec{307& -142 \\ 144 & -60 \\  -60 & 25 }\vec{c}=\myvec{-663 \\ -312\\ 130} \label{eq:conics/ex/solution/eqcen}
+\end{align}
+Forming the augmented matrix and row reducing it:
+\begin{align}
+\myvec{307 & -142 & -663\\144 & -60 & -312 \\-60 & 25 &130 }\\
+R_2\leftrightarrow \cfrac{R_2}{12} \nonumber \\
+\myvec{307 & -142 & -663\\12 & -5 & -26 \\-60 & 25 &130}\\
+R_3\leftrightarrow R_3+5R_2 \nonumber \\
+\myvec{307 & -142 & -663\\12 & -5 & -26 \\0 & 0 &0}\\
+R_1\leftrightarrow \cfrac{R_1}{307} \nonumber \\
+\myvec{1 & \cfrac{-142}{307} & \cfrac{-663}{307}\\0 & \cfrac{169}{307} & \cfrac{-26}{307} \\0 & 0 &0}\\ R_2\leftrightarrow R_2-12R_1 \nonumber \\
+\myvec{1 & \cfrac{-142}{307} & \cfrac{-663}{307}\\0 & 1 & \cfrac{-26}{307} \\0 & 0 &0}\\
+R_1\leftrightarrow R_1 +(142/307)R_2 \nonumber \\
+\myvec{1 & 0 & -29/13\\0 & 1 & -2/13 \\0 & 0 &0}
+\end{align}
+Thus the vertex $\vec{c}$ is:
+\begin{align}
+\vec{c}=\myvec{ -29/13\\-2/13} 
 \end{align}
 
-Introducing a variable $\lambda$
-
+The direction vector of axis of symmetry is given by :
 \begin{align}
-    (12x-5y+\lambda)^2=
-\\
-    272y-619x-663-10\lambda y+24\lambda x+\lambda ^2
-\\
-    (12x-5y+\lambda)^2=
-\\
-    (272-10\lambda)y-(619-24\lambda)x+\lambda^2-663
+m=Vc+u\\
+=\myvec{144&-60\\-60&25}\myvec{-\cfrac{29}{13}\\-\cfrac{2}{13}}+\myvec{\cfrac{619}{2}\\-\cfrac{272}{2}}\\
+=\myvec{-\cfrac{5}{2}\\-6}\\
+\norm{m}=\cfrac{13}{2}\\
+\implies \cfrac{m}{\norm{m}}=\myvec{-\cfrac{5}{13}\\-\cfrac{12}{13}}
 \end{align}
 
+The focus is given by:
 \begin{align}
-    12x-5y+\lambda=0
-\\
-    (272-10\lambda)y-(619-24\lambda)x+\lambda^2-663=0
-\end{align}
-
-For $\lambda$ we assume both lines to be perpendicular
-
-\begin{multline}
-\\
-    m=-\cfrac{12}{-5}=\cfrac{12}{5}
-\\
-    m'=-\cfrac{-(619-24\lambda)}{272-10\lambda}
-\\
-    m \times m'= -1
-\\
-    \cfrac{12}{5} \times \cfrac{-(619-24\lambda)}{272-10\lambda}=-1
-\\
-    7428-288\lambda=50\lambda-1360
-\\
-    \implies \lambda = 26
-\\
-    (12x-5y+26)^2
-\\
-    =(272-10\times26)y-(619-24\times26)x
-\\
-    +(26)^2-663
-\\
-    \implies (12x-5y+26)^2=5x+12y+13
-\\
-    \myvec{\cfrac{12x-5y+26}{13}}^2=\cfrac{1}{13}\myvec{\cfrac{5x-12y+13}{13}}
-\\
-    Y=\cfrac{12x-5y+26}{13}
-\\
-    X=\cfrac{5x-12y+13}{13}
-\\
-    Y^2=\cfrac{1}{13}X
-\end{multline}
-
-Comparing with equation of parabola $y^2=4ax$:
-
-\begin{align}
-    4a=\cfrac{1}{13}
-\\
-    a=\cfrac{1}{52}
+F=c-(\cfrac{m}{\norm{m}}\times a)\\
+=\myvec{-\cfrac{29}{13}\\-\cfrac{2}{13}}-\myvec{\myvec{-\cfrac{5}{13\\-\cfrac{12}{13}}}\times \cfrac{1}{52}}\\
+=\myvec{-\cfrac{1503}{676},-\cfrac{23}{169}}
 \end{align}
 
 \begin{figure}[!ht]
@@ -84,34 +115,9 @@ Comparing with equation of parabola $y^2=4ax$:
 \caption{Traced parabola}
 \label{parabola}
 \end{figure}
+\end{enumerate}
 
-The focus of the parabola is obtained by solving $X-a=0$ and $Y=0$.
-\begin{align}
-    \cfrac{5x-12y+13}{13}-a=0
-\\
-    \cfrac{5x-12y+13}{13}-\cfrac{1}{52}=0
-\\
-    20x+48y+51=0\label{eq : 1}
-\end{align}
 
-\begin{align}
-    \cfrac{12x-5y+26}{13}=0
-\\
-    12x-5y+26=0 \label{eq : 2}
-\end{align} 
- 
-Solving \ref{eq : 1} and \ref{eq : 2} we get :
-
-\begin{align}
-    x=-\cfrac{1503}{676}
-\\
-    y=-\cfrac{23}{169}
-\end{align}
-
-The focus is :
-\begin{align}
-    \myvec{-\cfrac{1503}{676},-\cfrac{23}{169}}
-\end{align}
 
 
 
