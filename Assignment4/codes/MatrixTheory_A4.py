@@ -49,6 +49,10 @@ print(c,foc)
 #print(p,c)
 P=-P
 c1 = np.array(([(u@V@u-2*D_vec[0]*u@u+D_vec[0]**2*f)/(eta*D_vec[0]*2),0]))
+xx=-1503/676
+yy=-23/169
+plt.scatter(xx,yy,color="blue")
+plt.annotate("F",(xx,yy))
 xStandardparab = np.vstack((x,y))
 #xActualparab = P@(xStandardparab - c1[:,np.newaxis])-u[:,np.newaxis]/D_vec[1]
 xActualparab = P@xStandardparab + c[:,np.newaxis]
