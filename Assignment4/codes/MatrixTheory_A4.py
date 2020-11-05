@@ -42,6 +42,8 @@ c = c.flatten()
 
 print(c,-29/13,-2/13,foc)
 plt.plot(-1503/676,-23/169)
+plt.scatter(-1503/676,-23/169)
+
 plt.annotate("F",(-1503/676,-23/169))
 #print(cA,cb)
 #print(p,c)
