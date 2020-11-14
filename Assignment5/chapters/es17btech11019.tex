@@ -1,0 +1,45 @@
+Download all latex-tikz codes from 
+%
+\begin{lstlisting}
+https://github.com/sahilsin/MatrixTheory/tree/master/Assignment5
+\end{lstlisting}
+\section{Problem}
+find the QR decomposition of the following:\\
+\begin{align}
+\vec{V}=\myvec{144 & -60 \\-60 & 25}\label{eq:2.0.3}
+\end{align}
+\section{Solution}
+Here, let the column vectors of $\vec{V}$ be $\alpha$ and $\beta$:
+\begin{align}
+\alpha=\myvec{144 \\ -60}\\
+\beta=\myvec{-60 \\25}
+\end{align}
+To find $\vec{Q}=\myvec{\vec{u}_1 &\vec{u}_2}$, we will orthonormalize the columns of $\vec{V}$ using Gram Schmidt method:
+\begin{align}
+\vec{u}_1=\cfrac{\alpha}{k_1}\\
+k_1=\norm{\alpha}=\sqrt{144^2+(-60)^2}=156\\
+\implies \vec{u}_1=\cfrac{1}{156}\myvec{144 \\ -60}=\myvec{\cfrac{144}{156} \\ \cfrac{-60}{156}}
+\end{align}
+
+\begin{align}
+\vec{u}_2=\cfrac{\beta-r_1\vec{u}_1}{\norm{\beta-r_1\vec{u}_1}}\\
+r_1=\cfrac{\vec{u}_1^T \beta}{\norm{\vec{u}_1}^2}=\cfrac{\myvec{\cfrac{144}{156} & \cfrac{-60}{156}}\myvec{-60 \\ 25}}{\sqrt{\cfrac{144}{156}^2+(\cfrac{-60}{156})^2}}=-65\\
+\implies \vec{u}_2=\myvec{0 \\ 0}
+\end{align}
+\begin{align}
+    \text{Also,} \quad k_2=\vec{u}_2^T \beta =\myvec{0 & 0}\myvec{-60 \\25} = 0
+\end{align}
+The QR decomposition is given as:
+\begin{align}
+    \myvec{\alpha & \beta}=\myvec{\vec{u}_1 &\vec{u}_2}\myvec{k_1 & r_1 \\0 & k_2} \label{eq2.0.12}
+    \intertext{Where,}
+    \vec{Q}=\myvec{\vec{u}_1 &\vec{u}_2}\\
+    \vec{R}=\myvec{k_1 & r_1 \\0 & k_2}
+\end{align}
+Putting the values of $\vec{u}_1$, $\vec{u}_2$, $k_1$, $k_2$ and $r_1$ in equation \eqref{eq2.0.12}:
+\begin{align}
+    \boxed{\vec{V}=\myvec{\cfrac{144}{156} & 0 \\\cfrac{-60}{156} & 0}\myvec{156 & -65 \\0 & 0}}
+    \intertext{Where,}
+    \vec{Q}=\myvec{\cfrac{144}{156} & 0 \\\cfrac{-60}{156} & 0}\\
+    \vec{R}=\myvec{156 & -65 \\0 & 0}
+\end{align}
