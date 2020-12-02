@@ -1,0 +1,161 @@
+\section{Problem}
+Find the centre of parabola using SVD and verify through least square method.
+\begin{align}
+144y^2-120xy+25x^2+619x-272y+663=0
+\end{align}
+
+\section{Solution}
+The general second degree equation can be expressed as follows,
+\begin{align}
+\Vec{x}^T\Vec{V}\Vec{x}+2\Vec{u}^T\Vec{x}+f=0
+\intertext{where,}
+\vec{V} &= \myvec{144&-60\\-60&25}\\ \label{eq:conics/ex/solution/given1}
+\vec{u} &= \myvec{\cfrac{619}{2}\\-136}\\ 
+f &= 663 \label{eq:conics/ex/solution/given2}
+\end{align}
+\begin{enumerate}
+\item Expanding the determinant of $\vec{V}$ we observe, 
+\begin{align}
+\mydet{144&-60\\-60&25} = 0 \label{eq:conics/ex/solution/eq2.1}
+\end{align}
+Also
+\begin{align}
+    \mydet{\vec{V} & \vec{u} \\ \vec{u}^T & f}=
+    \mydet{144&-60 & \cfrac{619}{2} \\-60&25 & -136 \\ \cfrac{619}{2} & -136 & 663} \\
+    \neq 0\label{eq:conics/ex/solution/eq2.2}
+\end{align}
+Hence from \eqref{eq:conics/ex/solution/eq2.1} and \eqref{eq:conics/ex/solution/eq2.2} we conclude that given equation is an parabola. The characteristic equation of $\vec{V}$ is given as follows,
+\begin{align}
+\mydet{\lambda\vec{I}-\vec{V}} = \mydet{\lambda-144&60\\60&\lambda-25} &= 0\\
+\implies \lambda^2-169\lambda &= 0\label{eq:conics/ex/solution/eqchar}
+\end{align}
+Hence the characteristic equation of $\vec{V}$ is given by \eqref{eq:conics/ex/solution/eqchar}. The roots of \eqref{eq:conics/ex/solution/eqchar} i.e the eigenvalues are given by
+\begin{align}
+\lambda_1=0, \lambda_2=169\label{eq:conics/ex/solution/eqeigenvals}    
+\end{align}
+\item For $\lambda_1 = 0$, the eigen vector $\vec{p}$ is given by 
+\begin{align}
+\vec{V}\vec{p} = 0
+\end{align}
+Row reducing $\vec{V}$ yields
+\begin{align}
+\implies
+\myvec{-144&60\\60&-25}\xleftrightarrow[R_2=R_2+5R_1]{R_1=\frac{R_1}{12}}\myvec{-12&5\\0&0}\\
+\implies\vec{p}_1=\cfrac{1}{13}\myvec{5\\12} \label{eq:conics/ex/solution/eq2.3}
+\end{align}
+Similarly, 
+\begin{align}
+\vec{p}_2=\frac{1}{13}\myvec{12\\-5} 
+\end{align}
+%
+Thus, the eigenvector rotation matrix and the eigenvalue matrix are
+\begin{align}
+\vec{P}&=\myvec{\vec{p_1}&\vec{p_2}}=\frac{1}{13}\myvec{5&12\\ 12 &-5} \\
+\vec{D}&=\myvec{0&0\\0&169}
+\end{align}
+The focal length of the parabola is given by 
+\begin{align}
+\frac{\abs{2\vec{u}^T\vec{p_1}}}{\lambda_2}
+    = \frac{13}{169}=\cfrac{1}{13}
+\end{align}
+and its equation is
+\begin{align}
+    \vec{y^T}\vec{D}\vec{y}&=-\eta\myvec{1&0}\vec{y}\label{eq:conics/ex/solution/eq2.4}
+\end{align}
+where
+\begin{align}
+    \eta=2\vec{u}^T\vec{p_1}=-13
+\end{align}
+and the vertex $\vec{c}$ is given by 
+\begin{align}
+    \myvec{\vec{u^T}+\frac{\eta}{2}\vec{p_1^T} \\ \vec{V}}\vec{c}=
+    \myvec{-f \\\frac{\eta}{2}\vec{p_1}-\vec{u}} 
+\end{align}
+using equations \eqref{eq:conics/ex/solution/given1},\eqref{eq:conics/ex/solution/given2} and \eqref{eq:conics/ex/solution/eq2.3}
+\begin{align}
+    \myvec{307& -142 \\ 144 & -60 \\  -60 & 25 }\vec{c}=\myvec{-663 \\ -312 \\ 130}
+\end{align}
+
+\subsection{Singular Value Decomposition:}
+\begin{align}
+\vec{Mc=b} \label{1}
+\end{align}
+where
+\begin{align}
+\vec{M} = \myvec{307 & -142 \\ 144 & -60 \\ -60 & 25},b = \myvec{-663 \\-312\\130} \label{eq:2}	
+\end{align}
+To solve \eqref{1}, we perform singular value decomposition on $\vec{M}$ given as 
+\begin{align}
+	\vec{M = USV^T }\label{3}
+\end{align}
+Substituting the value of $\vec{M}$ from \eqref{3} in \eqref{1}, we get
+\begin{align}
+	&\vec{USV^T}\vec{c} = \vec{b} \\
+\implies& \vec{c} = \vec{VS_+U^T}\vec{b}\label{eq:4}
+\end{align}
+where, $\vec{S_+}$ is Moore-Pen-rose Pseudo-Inverse of $\vec{S}$. Columns of $\vec{U}$ are eigen-vectors of $\vec{MM^T}$, columns of $\vec{V}$ are eigenvectors of $\vec{M^TM}$ and $\vec{S}$ is diagonal matrix of singular value of eigenvalues of $\vec{M^TM}$. First calculating the eigenvectors corresponding to $\vec{M^TM}$.\newline
+Using Python, $\vec{U}, \vec{S}$ and $\vec{V}$ for $\vec{M}$ is given by: 
+\begin{align}
+	 \vec{U} = \myvec{-\frac{8946}{10000} & \frac{4468}{10000} & 0 \\ \frac{-4124}{10000} & \frac{-8258}{10000} & \frac{3846}{10000} \\ \frac{1718}{10000} & \frac{3441}{10000} & \frac{9231}{10000} } \label{eq:U}
+\end{align}
+\begin{align}
+	 \vec{S} = \myvec{\frac{3780744}{10000} & 0 \\ 0 & \frac{58110}{10000}  \\ 0 & 0 }
+\end{align} \label{eq:S}
+\begin{align}
+	 \vec{V} = \myvec{\frac{-9108}{10000} & \frac{-4128}{10000} \\ \frac{4128}{10000} & \frac{-9108}{10000} } \label{eq:V}
+\end{align}
+Now, More-Pen-Rose Pseudo inverse of $\vec{S}$ is given by,
+\begin{align}
+	 \vec{S_+} = \myvec{\frac{10000}{3780744} & 0 & 0 \\ 0 & \frac{10000}{58110} & 0 } \label{eq:S+}
+\end{align} 
+Hence, we get singular value decomposition of $\vec{M}$ as,
+\begin{align}
+	 \vec{M} =\myvec{-\frac{8946}{10000} & \frac{4468}{10000} & 0 \\ \frac{-4124}{10000} & \frac{-8258}{10000} & \frac{3846}{10000} \\ \frac{1718}{10000} & \frac{3441}{10000} & \frac{9231}{10000} }\myvec{\frac{3780744}{10000} & 0 \\ 0 & \frac{58110}{10000}  \\ 0 & 0 }\myvec{\frac{-9108}{10000} & \frac{4128}{10000} \\ \frac{-4128}{10000} & \frac{-9108}{10000} }
+\end{align}
+From \eqref{eq:2} and \eqref{eq:U}
+\begin{align}
+	 \vec{U^Tb} = \myvec{-\frac{8946}{10000} & \frac{-4124}{10000} & 0 \\ \frac{-4468}{10000} & \frac{-8258}{10000} & \frac{3846}{10000} \\ \frac{1718}{10000} & \frac{3441}{10000} & \frac{9231}{10000} }\myvec{-663 \\ -312 \\ 130} = \myvec{\frac{7441606}{10000}\\ \frac{61658}{10000}\\ 0} \label{eq:UTb}
+\end{align}
+From \eqref{eq:V} and \eqref{eq:S+}
+\begin{align}
+	 \vec{VS_+} = \myvec{\frac{-9108}{10000} & \frac{-4128}{10000} \\ \frac{4128}{10000} & \frac{-9108}{10000} }\myvec{\frac{10000}{3780744} & 0 & 0 \\ 0 & \frac{10000}{58110} & 0 } = \myvec{\frac{-24}{10000} & \frac{-710}{10000} & 0 \\ \frac{11}{10000} & \frac{-1567}{10000} & 0 }\label{eq:VS}
+\end{align}
+Substitute \eqref{eq:VS} and \eqref{eq:UTb} in \eqref{eq:4} we get,
+\begin{align}
+	 \vec{c} = \myvec{\frac{-24}{10000} & \frac{-710}{10000} & 0 \\ \frac{11}{10000} & \frac{-1567}{10000} & 0 }\myvec{\frac{7441606}{10000}\\ \frac{61658}{10000}\\ 0} 
+\end{align}
+\begin{align}
+	\implies \boxed{\vec{c} = \myvec{\frac{-22308}{10000}\\ \frac{-1538}{10000}} =\myvec{-2.23 \\ -0.15} }
+\end{align} 
+\subsection{Least Square Verification}
+Now, verify our solution using,
+\begin{align}
+	 \vec{M^TMc} = \vec{M^Tb} 
+\end{align}
+From \eqref{eq:2},
+\begin{align}
+    \myvec{307 & 144 & -60 \\ -142 & -60 & 25 } \myvec{307 & -142 \\ 144 & -60 \\  -60 & 25 } \vec{c}\\= \myvec{307 & 144 & -60 \\ -142 & -60 & 25 }\myvec{-663 \\ -312 \\ 130}
+\end{align}
+\begin{align}
+    \implies \myvec{118585 & -53734 \\ -53734 & 24389 } \vec{c}= \myvec{-256269 \\ 116116 }
+\end{align}
+Solving the augmented matrix, we get
+\begin{align}
+\myvec{118585 & -53734 & -256269 \\ -53734 & 24389 & 116116} &\xleftrightarrow{R_1=\frac{R_1}{118585}}\myvec{1&\frac{-53734}{118585}&\frac{-256269}{118585}\\ -53734 & 24389 & 116116}\\
+&\xleftrightarrow{R_2=R_2+53734R_1}\myvec{1&\frac{-53734}{118585}&\frac{-256269}{118585}\\ 0 & \frac{4826809}{118585} & \frac{-742586}{118585}}\\
+&\xleftrightarrow{R_2=\frac{118585}{4826809}R_2}\myvec{1&\frac{-53734}{118585}&\frac{-256269}{118585}\\ 0 & 1 & \frac{-742586}{4826809}}\\
+&\xleftrightarrow{R_1=R_1+\frac{53734}{118585}R_2}\myvec{1 & 0 & \frac{-11970539}{5723871}\\ 0 & 1 & \frac{-742586}{4826809}}
+\end{align}
+Thus,
+\begin{align}
+    \implies \boxed{\vec{c}= \myvec{\frac{-11970539}{5723871}\\ \frac{-742586}{4826809}}= \myvec{-2.23 \\ -0.15}}
+\end{align}
+Hence, verified the result from SVD.\\  \label{eq:conics/ex/solution/eqcen}
+
+
+\end{enumerate}
+
+
+
+
+
