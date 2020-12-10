@@ -1,0 +1,76 @@
+\section{Problem}
+Let $W_{1}=\{(u,v,w,x)\subset R^{4} | u+v+w=0,2v+x=0,2u+2w-x=0\}$ and $W_{2}=\{(u,v,w,x)\subset R^{4} | u+v+x=0,v-x=0,u+w-2x=0\}$\\Then which among the following is true$?$\\
+\begin{align}
+    1) dim(W_{1})=1
+\\
+    2) dim(W_{2})=2
+\\
+    3) dim(W_{1}\cap W_{2})=1
+\\
+    4) dim(W_{1}+W_{2})=3
+\end{align}
+
+\section{Solution}
+\begin{enumerate}
+    \item Here we solve them one by one :
+\begin{multline}
+    W_{1}=\{(u,v,w,x)\subset R^{4} \\ | u+v+w=0,2v+x=0,2u+2w-x=0\}
+\\
+    \implies \{(u,v,w,x)\subset R^{4} \\ | u+v+w=0,x=-2v,2u+2w-(-2v)=0\}
+\\
+    \implies \{(u,v,w,x)\subset R^{4} \\ | u+v+w=0,x=-2v,u+v+w=0\}
+\\
+    \implies \{(u,v,w,x)\subset R^{4} \\ | w=-u-v,x=-2v\}
+\\
+    \implies \{(u,v,-u-v,-2v) \\ | u,v \subset R\}
+\\
+    \implies \{(u,0,-u,0)+(0,v,-v,-2v) \\ | u,v \subset R\}
+\\
+    \implies \{u(1,0,-1,0)+v(0,1,-1,-2) \\ | u,v \subset R\}
+\\
+    \implies span\{(1,0,-1,0),(0,1,-1,-2)\}
+\end{multline}
+
+As these two are independent vectors,\\ 
+$dim(W_{1})=2$
+
+\begin{multline}
+    W_{2}=\{(u,v,w,x)\subset R^{4} | \\ u+v+x=0,v-x=0,u+w-2x=0\}
+\\
+    \implies \{(u,v,w,x)\subset R^{4} | \\ u+w=-x,v=x,u+w=2x\}
+\\
+    \implies \{(u,v,w,x)\subset R^{4} | \\ u+w=-x,v=x,-x=2x\}
+\\
+    \implies \{(u,v,w,x)\subset R^{4} | \\ u+w=-x,v=x,x=0\}
+\\
+   \implies \{(u,v,w,x)\subset R^{4} | \\ u+w=0,v=0,x=0\}
+\\
+   \implies \{(u,v,w,x)\subset R^{4} | \\ w=-u,v=0,x=0\}
+\\
+    \implies \{(u,0,-u,0) | \\ u \subset R\}
+\\
+    \implies \{u(1,0,-1,0) | \\ u \subset R\}
+\\
+    \implies span\{(1,0,-1,0)\}
+\end{multline}
+
+$dim(W_{2})=1$
+
+\begin{multline}
+    W_{1} \cap W_{2} = span\{(1,0,-1,0)\}
+\\
+    \implies dim(W_{1} \cap W_{2})=1
+\\
+    dim(W_{1}+W_{2}) \\ =dim(W_{1})+dim(W_{2})-dim(W_{1} \cap W_{2})
+\\
+    =2+1-1
+\\
+    =2
+\end{multline}
+
+So, the answer is $3) dim(W_{1}\cap W_{2})=1$
+\end{enumerate}
+
+
+
+
