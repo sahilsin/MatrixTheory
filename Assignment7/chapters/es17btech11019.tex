@@ -1,5 +1,13 @@
 \section{Problem}
-Let $W_{1}=\{(u,v,w,x)\subset R^{4} | u+v+w=0,2v+x=0,2u+2w-x=0\}$ and $W_{2}=\{(u,v,w,x)\subset R^{4} | u+v+x=0,v-x=0,u+w-2x=0\}$\\Then which among the following is true$?$\\
+Let 
+\begin{align*}
+    W_{1}=\myvec{u\\v\\w\\x} \subset R^{4}\\ | u+v+w=0,2v+x=0,2u+2w-x=0
+\end{align*}
+and
+\begin{align*}
+    W_{2}=\myvec{u\\v\\w\\x}\subset R^{4}\\ | u+v+x=0,v-x=0,u+w-2x=0
+\end{align*}
+Then which among the following is true$?$
 \begin{align}
     1) dim(W_{1})=1
 \\
@@ -16,48 +24,44 @@ Let $W_{1}=\{(u,v,w,x)\subset R^{4} | u+v+w=0,2v+x=0,2u+2w-x=0\}$ and $W_{2}=\{(
 \begin{multline}
     W_{1}=\{(u,v,w,x)\subset R^{4} \\ | u+v+w=0,2v+x=0,2u+2w-x=0\}
 \\
-    \implies \{(u,v,w,x)\subset R^{4} \\ | u+v+w=0,x=-2v,2u+2w-(-2v)=0\}
+    \implies \myvec{u\\v\\w\\x}\subset R^{4} \\ | u+v+w=0,x=-2v,2u+2w-(-2v)=0
 \\
-    \implies \{(u,v,w,x)\subset R^{4} \\ | u+v+w=0,x=-2v,u+v+w=0\}
+    \implies  \myvec{u\\v\\w\\-2v}\subset R^{3} \\ | u+v+w=0,x=-2v,u+v+w=0
 \\
-    \implies \{(u,v,w,x)\subset R^{4} \\ | w=-u-v,x=-2v\}
+    \implies \myvec{u\\v\\-u-v\\-2v}\subset R^{2} \\ | w=-u-v,x=-2v
 \\
-    \implies \{(u,v,-u-v,-2v) \\ | u,v \subset R\}
+    \implies u\myvec{1\\0\\-1\\0}+v\myvec{0\\1\\-1\\-2} \\ | u,v \subset R
 \\
-    \implies \{(u,0,-u,0)+(0,v,-v,-2v) \\ | u,v \subset R\}
-\\
-    \implies \{u(1,0,-1,0)+v(0,1,-1,-2) \\ | u,v \subset R\}
-\\
-    \implies span\{(1,0,-1,0),(0,1,-1,-2)\}
+    \implies W_{1}= span\myvec{1&0\\0&1\\-1&-1\\0&-2}
 \end{multline}
 
 As these two are independent vectors,\\ 
 $dim(W_{1})=2$
 
 \begin{multline}
-    W_{2}=\{(u,v,w,x)\subset R^{4} | \\ u+v+x=0,v-x=0,u+w-2x=0\}
+    W_{2}=\myvec{u\\v\\w\\x}\subset R^{4} | \\ u+v+x=0,v-x=0,u+w-2x=0
 \\
-    \implies \{(u,v,w,x)\subset R^{4} | \\ u+w=-x,v=x,u+w=2x\}
+    \implies \myvec{u\\v\\w\\v}\subset R^{3} | \\ u+w=-x,v=x,u+w=2x
 \\
-    \implies \{(u,v,w,x)\subset R^{4} | \\ u+w=-x,v=x,-x=2x\}
+    \implies \myvec{u\\v\\w\\v}\subset R^{3} | \\ u+w=-x,v=x,-x=2x
 \\
-    \implies \{(u,v,w,x)\subset R^{4} | \\ u+w=-x,v=x,x=0\}
+    \implies \myvec{u\\v\\w\\v}\subset R^{3} | \\ u+w=-x,v=x,x=0
 \\
-   \implies \{(u,v,w,x)\subset R^{4} | \\ u+w=0,v=0,x=0\}
+   \implies \myvec{u\\0\\w\\0}\subset R^{2} | \\ u+w=0,v=0,x=0
 \\
-   \implies \{(u,v,w,x)\subset R^{4} | \\ w=-u,v=0,x=0\}
+   \implies \myvec{u\\0\\-u\\0}\subset R | \\ w=-u,v=0,x=0
 \\
-    \implies \{(u,0,-u,0) | \\ u \subset R\}
+    \implies u\myvec{1\\0\\-1\\0}\subset R | \\ u \subset R
 \\
-    \implies \{u(1,0,-1,0) | \\ u \subset R\}
+    \implies W_{2}= span\myvec{1\\0\\-1\\0}
 \\
-    \implies span\{(1,0,-1,0)\}
+    \implies dim(W_{2})=1
 \end{multline}
 
-$dim(W_{2})=1$
+
 
 \begin{multline}
-    W_{1} \cap W_{2} = span\{(1,0,-1,0)\}
+    W_{1} \cap W_{2} = span\myvec{1\\0\\-1\\0}
 \\
     \implies dim(W_{1} \cap W_{2})=1
 \\
