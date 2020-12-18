@@ -1,0 +1,72 @@
+\section{Problem}
+\begin{enumerate}
+    \item Consider a Markov chain with transition probability matrix P given by
+    \begin{align}
+        \myvec{\cfrac{1}{2}&\cfrac{1}{2}&0\\0&\cfrac{1}{2}&\cfrac{1}{2}\\\cfrac{1}{3}&\cfrac{1}{3}&\cfrac{1}{3} }
+    \end{align}
+    For any two states i and j.Let $P_{ij}^{(n)}$ denote the n step transition probability of going form i to j. Identify Correct statements.
+    \begin{align}
+        i)\lim_{n\to\infty} P_{11}^{(n)}=\cfrac{2}{9}
+    \\
+        ii)\lim_{n\to\infty} P_{21}^{(n)}=0
+    \\
+        iii)\lim_{n\to\infty} P_{32}^{(n)}=\cfrac{1}{3}
+    \\
+        iv)\lim_{n\to\infty} P_{13}^{(n)}=\cfrac{1}{3}
+    \end{align}
+\section{solution}
+Using Theorem : If a finite Markov Chain is irreducible and aperiodic then there is a unique stationary distribution
+\begin{align}
+    \lim_{k\to\infty} P^{(k)}=Ik
+\end{align}
+where I represents a column vector with each entry as 1. For 3 states we have :
+\begin{align}
+    \lim_{n\to\infty}P^{(n)}=\myvec{1\\1\\1}\myvec{\pi_{1}&\pi_{2}&\pi_{3}}
+\\
+    =\myvec{\pi_{1}&\pi_{2}&\pi_{3}\\\pi_{1}&\pi_{2}&\pi_{3}\\\pi_{1}&\pi_{2}&\pi_{3}}
+\\
+    \implies \lim_{n\to\infty}\myvec{P_{11}^{(n)}&P_{12}^{(n)}&P_{13}^{(n)}\\P_{21}^{(n)}&P_{22}^{(n)}&P_{23}^{(n)}\\P_{31}^{(n)}&P_{32}^{(n)}&P_{33}^{(n)}}
+\\
+    =\myvec{\pi_{1}&\pi_{2}&\pi_{3}\\\pi_{1}&\pi_{2}&\pi_{3}\\\pi_{1}&\pi_{2}&\pi_{3}}
+\end{align}
+
+A stationary distribution $\pi$ is a row vector whose entries are non-negative and sums up to 1, is unchanged by the operation of transition matrix p on it and so it is defined by $\pi P = \pi$.
+Let
+\begin{align}
+    \pi=\myvec{\pi_{1}&\pi_{2}&\pi_{3}}
+\\
+    \implies \myvec{\pi_{1}&\pi_{2}&\pi_{3}}\myvec{\cfrac{1}{2}&\cfrac{1}{2}&0\\0&\cfrac{1}{2}&\cfrac{1}{2}\\\cfrac{1}{3}&\cfrac{1}{3}&\cfrac{1}{3}} = \myvec{\pi_{1}&\pi_{2}&\pi_{3}}
+\\
+    \implies \myvec{ \cfrac{\pi_{1}}{2}+\cfrac{\pi_{3}}{3}& \cfrac{\pi_{1}}{2}+\cfrac{\pi_{2}}{2}+\cfrac{\pi_{3}}{3}&\cfrac{\pi_{2}}{2}+\cfrac{\pi_{3}}{3}}
+\end{align}
+On Comparing we get:
+\begin{align}
+    \cfrac{\pi_{1}}{2}+\cfrac{\pi_{3}}{3}=\pi_{1} \implies -3\pi_{1}+2\pi_{3}=0 \label{eq:1}
+\\
+    \cfrac{\pi_{1}}{2}+\cfrac{\pi_{2}}{2}+\cfrac{\pi_{3}}{3}=\pi_{2} \implies 3\pi_{1}-3\pi_{2}+2\pi_{3}=0 \label{eq:2}
+\\
+    \cfrac{\pi_{2}}{2}+\cfrac{\pi_{3}}{3}=\pi_{3} \And \pi_{1}+\pi_{2}+\pi_{3}=1 \label{eq:3}
+\end{align}
+
+On solving \ref{eq:1},\ref{eq:2} and \ref{eq:3}
+\begin{align}
+    \pi_{1}=\cfrac{2}{9},\pi_{2}=\cfrac{4}{9},\pi_{3}=\cfrac{1}{3}
+\\
+    \pi = \myvec{\cfrac{2}{9}&\cfrac{4}{9}&\cfrac{1}{3}}
+\end{align}
+
+\begin{align}
+    \implies \lim_{n\to\infty}\myvec{P_{11}^{(n)}&P_{12}^{(n)}&P_{13}^{(n)}\\P_{21}^{(n)}&P_{22}^{(n)}&P_{23}^{(n)}\\P_{31}^{(n)}&P_{32}^{(n)}&P_{33}^{(n)}} = \myvec{\cfrac{2}{9}&\cfrac{4}{9}&\cfrac{1}{3}\\\cfrac{2}{9}&\cfrac{4}{9}&\cfrac{1}{3}\\\cfrac{2}{9}&\cfrac{4}{9}&\cfrac{1}{3} }
+\end{align}
+\begin{align}
+    P_{11}^{(n)}=\cfrac{2}{9}
+\\
+    P_{13}^{(n)}=\cfrac{1}{3}
+\end{align}
+Hence , Options (i) and (iv) are correct.
+
+\end{enumerate}
+
+
+
+
